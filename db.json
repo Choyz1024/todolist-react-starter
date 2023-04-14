@@ -1,4 +1,11 @@
 {
+  "users": [
+    {
+      "username": "member002201",
+      "email": "member123001@alphacamp.co",
+      "password": "$2b$10$NovvashQExi4Tfm0mDzVWuQUQofx4NZr5KkDHwLwX1/CBdoSkG21K"
+    }
+  ],
   "todos": [
     {
       "title": "Learn react-router",
