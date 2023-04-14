@@ -87,6 +87,10 @@ const TodoInput = ({ inputValue, onChange, onAddTodo }) => {
             if (event.key === 'Enter') {
               onAddTodo?.();
             }
+            if (event.key === 'Escape') {
+              onChange?.('');
+              event.target.blur();
+            }
           }}
         />
       </StyledInputContainer>
