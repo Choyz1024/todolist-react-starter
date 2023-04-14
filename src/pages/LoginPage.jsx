@@ -1,11 +1,11 @@
-import {
-  AuthContainer,
-  AuthInputContainer,
-  AuthButton,
-  AuthLinkText,
-} from 'components/common/auth.styled';
 import { ACLogoIcon } from 'assets/images';
 import { AuthInput } from 'components';
+import {
+  AuthButton,
+  AuthContainer,
+  AuthInputContainer,
+  AuthLinkText,
+} from 'components/common/auth.styled';
 
 const LoginPage = () => {
   return (

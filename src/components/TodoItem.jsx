@@ -1,8 +1,11 @@
-import { CheckActiveIcon, CheckCircleIcon, CheckHoverIcon } from 'assets/images';
+import {
+  CheckActiveIcon,
+  CheckCircleIcon,
+  CheckHoverIcon,
+} from 'assets/images';
 import clsx from 'clsx';
 import { useRef } from 'react';
 import styled from 'styled-components';
-
 
 const StyledTaskItem = styled.div`
   min-height: 52px;
@@ -106,7 +109,7 @@ const TodoItem = ({ todo, onToggleDone, onSave, onDelete, onChangeMode }) => {
       onSave?.({ id: todo.id, title: inputRef.current.value });
     }
     if (e.key === 'Escape') {
-      inputRef.current.value = todo.title
+      inputRef.current.value = todo.title;
       onChangeMode?.({ id: todo.id, isEdit: false });
     }
   };
