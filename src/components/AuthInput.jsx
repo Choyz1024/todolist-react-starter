@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 
+
 const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
@@ -22,11 +23,16 @@ const StyledInput = styled.input`
   border-radius: 0px;
 `;
 
-const AuthInput = () => {
+const AuthInput = ({ type, label, value, placeholder, onChange }) => {
   return (
     <StyledContainer>
-      <StyledLabel>label</StyledLabel>
-      <StyledInput type="text" placeholder="placeholder" />
+      <StyledLabel>{label}</StyledLabel>
+      <StyledInput
+        type={type || 'text'}
+        value={value || ''}
+        placeholder={placeholder || ''}
+        onChange={(event) => onChange?.(event.target.value)}
+      />
     </StyledContainer>
   );
 };
