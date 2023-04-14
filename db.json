@@ -4,6 +4,16 @@
       "username": "admin",
       "email": "admin@example.com",
       "password": "$2b$10$cb.r6qFsOvG4vzJ5TqhY8.akvLHnDrD4ly5ZWi6JOqxENtivrpmwe"
+    },
+    {
+      "username": "user01",
+      "email": "user01@example.com",
+      "password": "$2b$10$3BoFRP2840O0OReYLXqvHeeXYdWctM8BLDsPsZ2660O0Vbz.g63mq"
+    },
+    {
+      "username": "user02",
+      "email": "user02@example.com",
+      "password": "$2b$10$4fRPMqj5n.leowbEzfaYtODgG9V4rgOdSTh4LcpwpY82x0ToDabia"
     }
   ],
   "todos": [
