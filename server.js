@@ -7,6 +7,7 @@ const router = jsonServer.router('db.json');
 const middlewares = jsonServer.defaults();
 
 const SECRET_KEY = 'mySecretKey';
+const PORT = 8000;
 
 server.use(jsonServer.bodyParser);
 server.use(middlewares);
@@ -91,6 +92,6 @@ server.get('/api/auth/test-token', (req, res) => {
 });
 
 server.use(router);
-server.listen(8000, () => {
-  console.log('JSON Server is running');
+server.listen(PORT, () => {
+  console.log(`JSON Server is running on http://localhost:${PORT}/`);
 });
