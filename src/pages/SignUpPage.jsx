@@ -5,18 +5,31 @@ import {
   AuthInputContainer,
   AuthLinkText,
 } from 'components/common/auth.styled';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
-import { register } from '../api/auth';
+import { checkPermission, register } from '../api/auth';
 
 const SignUpPage = () => {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate();
+  useEffect(() => {
+    const checkTokenIsValid = async () => {
+      const authToken = localStorage.getItem('authToken');
+      if (!authToken) {
+        return;
+      }
+      const result = await checkPermission(authToken);
+      if (result) {
+        navigate('/todos');
+      }
+    };
 
+    checkTokenIsValid();
+  }, [navigate]);
   const handleSignUp = async () => {
     if (username.length === 0) {
       return;
