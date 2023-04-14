@@ -83,13 +83,13 @@ const TodoInput = ({ inputValue, onChange, onAddTodo }) => {
           onChange={(e) => {
             onChange?.(e.target.value);
           }}
-          onKeyDown={(event) => {
-            if (event.key === 'Enter') {
+          onKeyDown={(e) => {
+            if (e.key === 'Enter') {
               onAddTodo?.();
             }
-            if (event.key === 'Escape') {
+            if (e.key === 'Escape') {
               onChange?.('');
-              event.target.blur();
+              e.target.blur();
             }
           }}
         />
