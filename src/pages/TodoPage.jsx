@@ -6,8 +6,7 @@ import { useNavigate } from 'react-router-dom';
 import { createTodo, deleteTodo, getTodos, patchTodo } from '../api/todo';
 
 const TodoPage = () => {
-  const { isAuthenticated } = useAuth();
-
+  const { isAuthenticated, currentMember } = useAuth();
   const [inputValue, setInputValue] = useState('');
   const [todos, setTodos] = useState([]);
   const navigate = useNavigate();
@@ -124,11 +123,10 @@ const TodoPage = () => {
       console.error(error);
     }
   };
-
   return (
     <div>
       TodoPage
-      <Header />
+      <Header username={currentMember?.name} />
       <TodoInput
         inputValue={inputValue}
         onChange={handleChange}

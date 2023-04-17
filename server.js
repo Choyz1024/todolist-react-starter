@@ -1,3 +1,4 @@
+const { v4: uuidv4 } = require('uuid');
 const jsonServer = require('json-server');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
@@ -16,7 +17,6 @@ server.use(middlewares);
 server.post('/api/auth/register', (req, res) => {
   const { username, email, password } = req.body;
   const saltRounds = 10;
-
   // 檢查帳號是否已存在
   const user = router.db.get('users').find({ username }).value();
   if (user) {
@@ -32,12 +32,15 @@ server.post('/api/auth/register', (req, res) => {
         .status(500)
         .json({ success: false, message: 'Error hashing password' });
     }
-
     // 新增使用者
-    router.db.get('users').push({ username, email, password: hash }).write();
+    const id = uuidv4();
+    router.db
+      .get('users')
+      .push({ id, username, email, password: hash })
+      .write();
 
     // 發送 token
-    const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ id, username }, SECRET_KEY, { expiresIn: '1h' });
     res.json({ authToken: token });
   });
 });
