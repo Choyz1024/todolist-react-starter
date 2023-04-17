@@ -2,9 +2,9 @@ import axios from 'axios';
 
 const baseUrl = 'http://localhost:8000';
 
-export const getTodos = async () => {
+export const getTodos = async (id) => {
   try {
-    const res = await axios.get(`${baseUrl}/todos`);
+    const res = await axios.get(`${baseUrl}/todos?owner=${id}`);
     return res.data;
   } catch (error) {
     console.error('[Get Todos failed]: ', error);
@@ -12,10 +12,11 @@ export const getTodos = async () => {
 };
 
 export const createTodo = async (payload) => {
-  const { title, isDone } = payload;
+  const { title, owner, isDone } = payload;
   try {
     const res = await axios.post(`${baseUrl}/todos`, {
       title,
+      owner,
       isDone,
     });
     return res.data;

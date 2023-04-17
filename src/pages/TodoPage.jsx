@@ -20,14 +20,14 @@ const TodoPage = () => {
   useEffect(() => {
     const getTodosAsync = async () => {
       try {
-        const todos = await getTodos();
+        const todos = await getTodos(currentMember?.id);
         setTodos(todos.map((todo) => ({ ...todo, isEdit: false })));
       } catch (error) {
         console.error(error);
       }
     };
     getTodosAsync();
-  }, []);
+  }, [currentMember]);
 
   const handleChange = (value) => {
     setInputValue(value);
@@ -40,6 +40,7 @@ const TodoPage = () => {
     try {
       const data = await createTodo({
         title: inputValue,
+        owner: currentMember.id,
         isDone: false,
       });
       setTodos((prevTodos) => {
