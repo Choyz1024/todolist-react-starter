@@ -66,7 +66,9 @@ server.post('/api/auth/login', (req, res) => {
     }
 
     // 發送 token
-    const token = jwt.sign({ username }, SECRET_KEY, { expiresIn: '1h' });
+    const token = jwt.sign({ id: user.id, username }, SECRET_KEY, {
+      expiresIn: '1h',
+    });
     res.json({ authToken: token, user: { username, email: user.email } });
   });
 });
